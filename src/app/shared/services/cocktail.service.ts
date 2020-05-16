@@ -4,7 +4,11 @@ import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable()
-
+/**
+ * Ce service contient tous les elements de gestion du coctail
+ * On a ajouté deux sujets (Observable ) pour, un pour la liste
+ * et l'autre pour le detail du cocktail
+ */
 export class CocktailService{
     public cocktails: BehaviorSubject<Cocktail[]> = new BehaviorSubject(
         [

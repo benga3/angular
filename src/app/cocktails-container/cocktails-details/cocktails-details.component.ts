@@ -12,6 +12,7 @@ export class CocktailsDetailsComponent implements OnInit {
   cocktail:Cocktail;
 
   ngOnInit(): void {
+    //Liaison du coctail du service et de celui de detail
     this.cocktailService.cocktail.subscribe(
       (cocktail:Cocktail) => this.cocktail = cocktail
       );

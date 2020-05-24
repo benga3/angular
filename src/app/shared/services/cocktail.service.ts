@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Cocktail} from '../models/cocktail.model'
 import { BehaviorSubject } from 'rxjs';
 import { Ingredient } from '../models/Ingredient.model';
+import { CocktailsDetailsComponent } from 'src/app/cocktails-container/cocktails-details/cocktails-details.component';
 
 
 @Injectable()
@@ -49,9 +50,19 @@ export class CocktailService{
     public cocktail:BehaviorSubject<Cocktail> = new BehaviorSubject(this.cocktails.value[0]);
     constructor(){}
 
-    selectCocktail(index: number) {
-        this.cocktail.next(this.cocktails.value[index]);
+    /**
+     * 
+     * @param index 
+     selectCocktail(index: number) {
+       this.cocktail.next(this.cocktails.value[index]);
       }
+  */
+
+      getCocktail(i:string):Cocktail{
+        const ind = Number(i);
+        return this.cocktails.value[i];
+      }
+
 }
 
 

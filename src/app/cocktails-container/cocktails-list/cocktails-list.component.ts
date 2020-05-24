@@ -21,10 +21,10 @@ export class CocktailsListComponent implements OnInit {
   /**
    * 
    * @param index index du tableau
-   */
-  public pickCocktail(index:number):void{
-    this.cocktailActive = index;
-    this.cocktailService.selectCocktail(index);
-  }
+   public pickCocktail(index:number):void{
+     this.cocktailActive = index;
+     this.cocktailService.selectCocktail(index);
+    }
+    */
 
 }

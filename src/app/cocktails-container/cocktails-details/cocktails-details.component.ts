@@ -1,6 +1,8 @@
 import { Component, OnInit, Input} from '@angular/core';
 import {Cocktail} from '../../shared/models/cocktail.model';
 import {CocktailService} from '../../shared/services/cocktail.service'
+import { Ingredient } from 'src/app/shared/models/Ingredient.model';
+import { PanierService } from 'src/app/shared/services/panier.service';
 
 @Component({
   selector: 'app-cocktails-details',
@@ -8,7 +10,7 @@ import {CocktailService} from '../../shared/services/cocktail.service'
   styleUrls: ['./cocktails-details.component.css']
 })
 export class CocktailsDetailsComponent implements OnInit {
-  constructor(private cocktailService:CocktailService) { }
+  constructor(private cocktailService:CocktailService, private panierService:PanierService) { }
   cocktail:Cocktail;
 
   ngOnInit(): void {
@@ -16,6 +18,10 @@ export class CocktailsDetailsComponent implements OnInit {
     this.cocktailService.cocktail.subscribe(
       (cocktail:Cocktail) => this.cocktail = cocktail
       );
+  }
+
+  addPanier(ingredients:Ingredient[]){
+      this.panierService.addIngredients(ingredients);
   }
 
 }

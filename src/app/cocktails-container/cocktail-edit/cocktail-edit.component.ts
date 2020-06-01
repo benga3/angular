@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 
 @Component({
   selector: 'app-cocktail-edit',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cocktail-edit.component.css']
 })
 export class CocktailEditComponent implements OnInit {
-
-  constructor() { }
+  myForm:FormGroup;
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.myForm = this.fb.group({
+      name:['', Validators.required],
+      img:[''],
+      desc: ['']
+    })
+  }
+
+  public createCocktail(){
+    console.log(this.myForm)
   }
 
 }

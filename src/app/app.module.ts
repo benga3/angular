@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -27,7 +28,8 @@ import { CocktailEditComponent } from './cocktails-container/cocktail-edit/cockt
   ],
   imports: [
     BrowserModule,
-    AppRouting
+    AppRouting,
+    ReactiveFormsModule
   ],
   providers: [PanierService],
   bootstrap: [AppComponent]

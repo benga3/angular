@@ -63,6 +63,17 @@ export class CocktailService{
         return this.cocktails.value[i];
       }
 
+      /**
+       * addCocktail
+       * cocktail:Cocktail      
+       * 
+       */
+      public addCocktail(cocktail:Cocktail) {
+        const cockS = this.cocktails.value.slice();
+        cockS.push(new Cocktail(cocktail.name,cocktail.img,cocktail.desc,cocktail.ingredients));
+        this.cocktails.next(cockS);
+      }
+
 }
 
 

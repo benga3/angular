@@ -11,6 +11,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./cocktails-details.component.css']
 })
 export class CocktailsDetailsComponent implements OnInit {
+  private index:number;
   constructor(
     private cocktailService:CocktailService, 
     private panierService:PanierService, 
@@ -25,9 +26,10 @@ export class CocktailsDetailsComponent implements OnInit {
 
       this.activatedRoute.paramMap.subscribe((params:ParamMap) =>{
         if (params.get('index')) {
-          
+          this.index = Number(params.get('index'));
           this.cocktail = this.cocktailService.getCocktail(params.get('index'))
         } else {
+          this.index = 0;
           this.cocktail = this.cocktailService.getCocktail('0')
         }
       })
@@ -36,5 +38,11 @@ export class CocktailsDetailsComponent implements OnInit {
   addPanier(ingredients:Ingredient[]){
       this.panierService.addIngredients(ingredients);
   }
+  
+  getUrl() {
+    return '/cocktails/' + this.index + '/edit';
+  }
+
+
 
 }

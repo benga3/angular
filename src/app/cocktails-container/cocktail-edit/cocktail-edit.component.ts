@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms'
+import {FormBuilder, FormGroup, Validators, FormArray, ReactiveFormsModule} from '@angular/forms'
 import { CocktailService } from 'src/app/shared/services/cocktail.service';
 import { Cocktail } from 'src/app/shared/models/cocktail.model';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, RouterLink } from '@angular/router';
 import { Ingredient } from 'src/app/shared/models/Ingredient.model';
 
 @Component({
   selector: 'app-cocktail-edit',
   templateUrl: './cocktail-edit.component.html',
-  styleUrls: ['./cocktail-edit.component.css']
+  styleUrls: ['./cocktail-edit.component.css'],
+  imports: [RouterLink, ReactiveFormsModule]
 })
 export class CocktailEditComponent implements OnInit {
   cocktailForm:FormGroup;

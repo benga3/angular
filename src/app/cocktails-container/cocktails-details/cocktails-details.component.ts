@@ -3,12 +3,13 @@ import {Cocktail} from '../../shared/models/cocktail.model';
 import {CocktailService} from '../../shared/services/cocktail.service'
 import { Ingredient } from 'src/app/shared/models/Ingredient.model';
 import { PanierService } from 'src/app/shared/services/panier.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-cocktails-details',
   templateUrl: './cocktails-details.component.html',
-  styleUrls: ['./cocktails-details.component.css']
+  styleUrls: ['./cocktails-details.component.css'],
+  imports: [RouterOutlet, RouterLink]
 })
 export class CocktailsDetailsComponent implements OnInit {
   private index:number;

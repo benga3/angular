@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-cocktails-list',
   templateUrl: './cocktails-list.component.html',
   styleUrls: ['./cocktails-list.component.css'],
-  imports: [CommonModule,RouterOutlet, RouterLink]
+  imports: [CommonModule, RouterLink]
 })
 export class CocktailsListComponent implements OnInit {
   cocktails:Cocktail[];

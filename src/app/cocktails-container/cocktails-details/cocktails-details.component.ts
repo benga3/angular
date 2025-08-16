@@ -9,7 +9,7 @@ import { ActivatedRoute, ParamMap, RouterLink, RouterOutlet } from '@angular/rou
   selector: 'app-cocktails-details',
   templateUrl: './cocktails-details.component.html',
   styleUrls: ['./cocktails-details.component.css'],
-  imports: [RouterOutlet, RouterLink]
+  imports: [RouterLink]
 })
 export class CocktailsDetailsComponent implements OnInit {
   private index:number;

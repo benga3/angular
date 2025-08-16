@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Ingredient } from '../models/Ingredient.model';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class PanierService {
 
 public panier: BehaviorSubject<Ingredient[]> = new BehaviorSubject(null)

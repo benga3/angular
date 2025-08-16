@@ -62,11 +62,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cocktails:build"
+            "buildTarget": "cocktails:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "cocktails:build:production"
+              "buildTarget": "cocktails:build:production"
             }
           }
         },

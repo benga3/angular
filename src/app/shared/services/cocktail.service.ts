@@ -2,10 +2,10 @@ import {Injectable} from '@angular/core';
 import {Cocktail} from '../models/cocktail.model'
 import { BehaviorSubject } from 'rxjs';
 import { Ingredient } from '../models/Ingredient.model';
-import { CocktailsDetailsComponent } from 'src/app/cocktails-container/cocktails-details/cocktails-details.component';
+import { CocktailsListComponent } from 'src/app/cocktails-container/cocktails-list/cocktails-list.component';
 
 
-@Injectable()
+@Injectable({providedIn: CocktailsListComponent})
 /**
  * Ce service contient tous les elements de gestion du coctail
  * On a ajouté deux sujets (Observable ) pour, un pour la liste

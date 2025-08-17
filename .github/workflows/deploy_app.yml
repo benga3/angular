@@ -1,0 +1,49 @@
+name: Cocktails App
+run-name: ${{ github.ref_name }} 
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: false
+        default: 'dev'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: ${{inputs.environment}}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22.18.0
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.18.0'
+          cache: npm
+
+      - name: Install dependencies and awscli
+        run: |
+         sudo apt-get update
+         sudo apt-get install python2-dev
+         sudo apt-get install python3-pip
+         pip install awscliv2
+         npm i -g @angular/cli
+         npm install
+
+      - name: Build project
+        run: npm run build --if-present
+      
+      - name: AWS Configuration
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws-region: eu-west-3
+      
+      - name: deploy static site to aws_s3
+        run: |
+          aws s3 --region "eu-west-3" sync dist/cocktails s3://bak-angular-demo --expires "2035-01-01T00:00:00Z" --cache-control "max-age=2592000,public" --delete
+          aws cloudfront create-invalidation --distribution-id ERW9FGA5VBUIR --paths "/*"
